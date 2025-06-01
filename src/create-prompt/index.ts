@@ -353,6 +353,14 @@ export function getEventTypeAndContext(envVars: PreparedContext): {
           : `pull request event`,
       };
 
+    case "pull_request_target":
+      return {
+        eventType: "PULL_REQUEST_TARGET",
+        triggerContext: eventData.eventAction
+          ? `pull request target ${eventData.eventAction}`
+          : `pull request target event`,
+      };
+
     default:
       throw new Error(`Unexpected event type`);
   }
